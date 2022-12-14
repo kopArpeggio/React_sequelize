@@ -5,8 +5,8 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 function Home() {
-    const [listOfPosts, setListOfPosts] = useState([]);
     let navigate = useNavigate()
+    const [listOfPosts, setListOfPosts] = useState([]);
 
     useEffect(() => {
         axios.get("http://127.0.0.1:3001/posts").then((response) => {
