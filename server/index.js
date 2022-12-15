@@ -16,6 +16,9 @@ app.use("/comments",commentsRouter)
 const studentRouter = require('./routes/Students')
 app.use("/students",studentRouter)
 
+const userRouter = require('./routes/Users')
+app.use("/users",userRouter)
+
 db.sequelize.sync().then(() => {
 
     app.listen(3001, () => {

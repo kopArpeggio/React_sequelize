@@ -8,5 +8,10 @@ router.get("/", async (req, res) => {
     res.json(student)
 })
 
+router.post("/", async (req, res) => {
+    const student = await Students.create(req.body)
+    res.json(student)
+})
+
 
 module.exports = router

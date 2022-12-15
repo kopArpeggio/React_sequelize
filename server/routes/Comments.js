@@ -1,17 +1,14 @@
 const express = require('express')
+const { postdetail, CreateComment, DeleteComment } = require('../controllers/CommentsController')
 const router = express.Router()
 const { Comments } = require('../models')
 
-router.get("/:postId", async (req, res) => {
-    const postId = req.params.postId
-    const comments = await Comments.findAll({where: {PostId: postId}})
-    res.json(comments)
-})
+const{validateToken} = require ('../middlewares/AuthMiddleware')
 
-router.post("/", async (req, res ) => {
-    const comment = req.body
-    await Comments.create(comment);
-    res.json(comment)
-})
+router.get("/:postId",postdetail)
+
+router.post("/", validateToken, CreateComment)
+
+router.post("/del/:id", DeleteComment)
 
 module.exports = router
